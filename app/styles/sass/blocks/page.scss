@@ -73,6 +73,24 @@
 			margin-bottom: 0;
 			margin-right: 80px;
 		}
+
+		@media (any-hover: hover) {
+			.content-bottom {
+				display: none;
+			}
+			&:hover {
+				.content-top {
+					display: none;
+				}
+	
+				// .welcome__button-content-bottom
+	
+				.content-bottom {
+					display: block;
+				}
+			}
+
+		}
 	}
 
 	.button-lost {
