@@ -1,0 +1,106 @@
+// USER VARIABLES SECTION
+
+$fontsize: 16px // Body Font Size
+$textcolor: #393939 // Text Color
+$darkBlue: #06B2BB
+$red: #FA5456
+$white: #ffffff
+$boxShadow: #00000029
+$yellow: #FDD219
+$lineheight: 1.65 // Document Line Height
+$userfont: Montserrat, sans-serif // User Font Family
+$systemfont: -apple-system, BlinkMacSystemFont, Arial, sans-serif // System Font Family
+
+// Bootstrap compatible gutter variable => $gutter
+$grid-gutter-width: 30px
+$gutter: $grid-gutter-width
+
+// IMPORT SECTION
+
+@import 'node_modules/bootstrap/scss/bootstrap-reboot.scss' // Bootstrap Reboot collection
+@import 'node_modules/bootstrap/scss/mixins/_breakpoints.scss' // Bootstrap Breakpoints mixin
+// @import 'node_modules/bootstrap/scss/bootstrap-grid.scss' // Optional Bootstrap Grid
+// @import 'node_modules/bootstrap/scss/utilities/_sizing.scss' // Optional Bootstrap Utilites
+
+// FONTS LOAD SECTION
+
+@mixin font($fname, $fstyle, $fweight, $furl)
+	@font-face
+		font-family: $fname
+		font-style: $fstyle
+		font-weight: $fweight
+		src: url($furl) format('woff2')
+
+@include font('Montserrat', normal, 400, '../fonts/Montserrat/Montserrat-Regular.woff2')
+@include font('Montserrat', normal, 500, '../fonts/Montserrat/Montserrat-Medium.woff2')
+@include font('Montserrat', normal, 600, '../fonts/Montserrat/Montserrat-Regular.woff2')
+@include font('Montserrat', normal, 700, '../fonts/Montserrat/Montserrat-Bold.woff2')
+@include font('Montserrat', normal, 800, '../fonts/Montserrat/Montserrat-ExtraBold.woff2')
+
+// GENERAL DOCUMENT STYLES
+
+::placeholder
+	color: #666
+
+::selection
+	//background-color: $accent
+	color: #fff
+
+input, textarea
+	outline: none
+	&:focus:required:invalid
+		border-color: red
+	&:required:valid
+		border-color: green
+
+body
+	font-family: $userfont
+	font-size: $fontsize
+	line-height: $lineheight
+	font-weight: 500
+	color: $textcolor
+	min-width: 320px
+	position: relative
+	overflow-x: hidden
+	height: 100%
+
+.wrapper
+	width: 100%
+	min-height: 100vh
+	overflow: hidden
+	display: flex
+	flex-direction: column
+
+._container
+	max-width: 1025px
+	margin: 0 auto
+	padding: 0 15px
+	height: 100%
+
+.page
+	flex: 1 1 100%
+
+.logo
+	width: 140px
+	height: 33px
+	margin-bottom: -10px
+	img
+		display: block
+		width: 100%
+
+.button
+	font-weight: 500
+	display: block
+	width: 112px
+	height: 34px
+	background-color: transparent
+	text-decoration: none
+	border: 1px solid $white
+	border-radius: 20px
+	color: $white
+	transition: background-color .3s ease-in-out, border .3s ease-in-out, color .3s ease-in-out
+	@media (any-hover: hover)
+		&:hover
+			background-color: $yellow
+			border: 1px solid lighten($yellow, .7)
+			color: #393939

@@ -1,0 +1,120 @@
+.welcome {
+	position: relative;
+	width: 100%;
+
+	// .welcome__row
+
+	&__row {
+		display: flex;
+		justify-content: center;
+	}
+
+	// .welcome__content
+
+	&__content {
+		flex: 1 0 450px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	// .welcome__title
+
+	&__title {
+		max-width: 490px;
+		font-size: 56px;
+		align-self: flex-end;
+		margin-bottom: 50px;
+		span {
+			color: $darkBlue;
+		}
+	}
+
+	&__logo {
+		width: 79px;
+		margin-bottom: -17px;
+		img {
+			display: block;
+			width: 100%;
+		}
+	}
+
+	&__img-container {
+		flex: 0 0 50%;
+		align-self: center;
+	}
+	// .welcome__img
+
+	&__img {
+		max-width: 490px;
+		img {
+			display: block;
+			width: 100%;
+		}
+	}
+
+	// .welcome__button
+
+	&__button {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		font-size: 32px;
+		height: 93px;
+		border-bottom-right-radius: 47px;
+		border-top-right-radius: 47px;
+		text-decoration: none;
+		color: inherit;
+		transition: background-color 0.3s ease-in-out;
+		&:not(:last-child) {
+			margin-bottom: 14px;
+		}
+		p {
+			margin-bottom: 0;
+			margin-right: 80px;
+		}
+	}
+
+	.button-lost {
+		background-color: $red;
+		margin-right: 130px;
+		color: $textcolor;
+		@media (any-hover: hover) {
+			&:hover {
+				background-color: $yellow;
+			}
+		}
+	}
+	.button-pet {
+		background-color: $darkBlue;
+		margin-right: 201px;
+		color: $white;
+		@media (any-hover: hover) {
+			&:hover {
+			}
+		}
+	}
+}
+
+.banner {
+	position: relative;
+	width: 100%;
+	background-color: $darkBlue;
+	margin-bottom: 9px;
+	// .banner__row
+
+	&__row {
+		display: flex;
+		align-items: center;
+		height: 260px;
+		font-size: 32px;
+		color: $white;
+	}
+
+	// .banner__container
+
+	&__container {
+		max-width: 750px;
+		margin: 0 auto;
+	}
+}
