@@ -3,13 +3,18 @@
 	background-color: #06b2bb;
 	&__logo.logo {
 		width: 200px;
-		height: 48px;
+		@include adaptiv-value("width", 200, 100, 1);
 	}
 	&__row {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		min-height: 193px;
+		@include adaptiv-value("min-height", 193, 120, 1);
+		@include media-breakpoint-down(sm) {
+			flex-direction: column;
+			justify-content: space-evenly;
+			padding: 10px 0;
+		}
 	}
 
 	// .footer__address
@@ -20,5 +25,8 @@
 		font-weight: 500;
 		color: $white;
 		text-align: end;
+		@include media-breakpoint-down(sm) {
+			text-align: center;
+		}
 	}
 }
