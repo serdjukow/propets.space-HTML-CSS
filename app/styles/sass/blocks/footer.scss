@@ -1,8 +1,7 @@
 .footer {
 	position: relative;
-	background-color: #06b2bb;
+	background-color: $darkBlue;
 	&__logo.logo {
-		width: 200px;
 		@include adaptiv-value("width", 200, 100, 1);
 	}
 	&__row {
@@ -24,6 +23,17 @@
 		font-size: 12px;
 		font-weight: 500;
 		color: $white;
+		text-align: end;
+		@include media-breakpoint-down(sm) {
+			text-align: center;
+		}
+	}
+}
+
+.home-footer {
+	background-color: $white;
+	.footer__address {
+		color: $darkBlue;
 		text-align: end;
 		@include media-breakpoint-down(sm) {
 			text-align: center;

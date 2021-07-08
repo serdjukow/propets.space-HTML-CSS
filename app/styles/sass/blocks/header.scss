@@ -7,10 +7,22 @@
 	@include media-breakpoint-down(md) {
 		margin-bottom: 30px;
 	}
+	&__buttons {
+		display: flex;
+	}
 }
 .header-row {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	min-height: 70px;
+
+}
+
+.home-header {
+	background-color: $white;
+	margin-bottom: 0;
+	@include media-breakpoint-down(md) {
+		margin-bottom: 0;
+	}
 }
