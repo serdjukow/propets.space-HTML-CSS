@@ -4,26 +4,26 @@
 <main class="page home-page">
 	<aside class="home-page__sidebar-left">
 		<nav class="home-page__navigation navigation">
+
+			<div class="menu-button">
+				<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-square-down" role="img"
+					xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
+					class="svg-inline--fa fa-caret-square-down fa-w-14 fa-9x">
+					<path fill="currentColor"
+						d="M448 80v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48h352c26.5 0 48 21.5 48 48zM92.5 220.5l123 123c4.7 4.7 12.3 4.7 17 0l123-123c7.6-7.6 2.2-20.5-8.5-20.5H101c-10.7 0-16.1 12.9-8.5 20.5z"
+						class=""></path>
+				</svg>
+			</div>
+
 			<ul class="navigation__list">
-				<li id="" class="navigation__li menu-button">
-					<a href="#" class="navigation__link">
-						<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-square-down"
-							role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
-							class="svg-inline--fa fa-caret-square-down fa-w-14 fa-9x">
-							<path fill="currentColor"
-								d="M448 80v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48h352c26.5 0 48 21.5 48 48zM92.5 220.5l123 123c4.7 4.7 12.3 4.7 17 0l123-123c7.6-7.6 2.2-20.5-8.5-20.5H101c-10.7 0-16.1 12.9-8.5 20.5z"
-								class=""></path>
-						</svg>
-					</a>
-				</li>
-				<li class="navigation__li">
-					<a href="#" class="navigation__link icon-home">Home</a>
-				</li>
-				<li class="navigation__li">
-					<a href="#" class="navigation__link icon-search">Lost</a>
-				</li>
 				<li class="navigation__li _active">
-					<a href="#" class="navigation__link icon-paw">Found</a>
+					<a data-menu="home" href="#" class="navigation__link icon-home">Home</a>
+				</li>
+				<li class="navigation__li">
+					<a data-menu="lost" href="#" class="navigation__link icon-search">Lost</a>
+				</li>
+				<li class="navigation__li">
+					<a data-menu="found" href="#" class="navigation__link icon-paw">Found</a>
 				</li>
 			</ul>
 		</nav>
@@ -33,16 +33,16 @@
 			</div>
 			<ul class="navigation__list">
 				<li class="navigation__li">
-					<a href="#" class="navigation__link icon-hotel">Hotels</a>
-				</li>
-				<li class="navigation__li _active">
-					<a href="#" class="navigation__link icon-walking">Walking</a>
+					<a data-menu="hotels" href="#" class="navigation__link icon-hotel">Hotels</a>
 				</li>
 				<li class="navigation__li">
-					<a href="#" class="navigation__link icon-dog">Fostering</a>
+					<a data-menu="walking" href="#" class="navigation__link icon-walking">Walking</a>
 				</li>
 				<li class="navigation__li">
-					<a href="#" class="navigation__link icon-stethoscope">VetHelp</a>
+					<a data-menu="fostering" href="#" class="navigation__link icon-dog">Fostering</a>
+				</li>
+				<li class="navigation__li">
+					<a data-menu="vethelp" href="#" class="navigation__link icon-stethoscope">VetHelp</a>
 				</li>
 			</ul>
 		</nav>
