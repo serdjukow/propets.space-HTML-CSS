@@ -5,10 +5,6 @@
 		margin: 0 auto;
 		padding: 30px 15px;
 	}
-	// .home-page__lost-content
-
-	&__lost-content {
-	}
 
 	// .home-page__title
 
@@ -16,6 +12,7 @@
 		font-size: 16px;
 		font-weight: 700;
 		color: $darkBlue;
+		margin-bottom: 25px;
 		&::after {
 			content: "";
 			display: block;
@@ -27,5 +24,233 @@
 	}
 }
 
-.lost-content {
+.services-cards {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	column-gap: 15px;
+	&:not(:last-child) {
+		padding-bottom: 20px;
+		margin-bottom: 20px;
+		border-bottom: 1px solid #707070;
+	}
+	@include media-breakpoint-down(sm) {
+		grid-template-columns: 1fr;
+		.first-item {
+			order: -1;
+		}
+		.services-cards__img {
+			margin-bottom: 20px;
+			img {
+				object-fit: cover;
+				display: block;
+				width: 100%;
+				height: 100%;
+			}
+		}
+	}
+
+	// .services-cards__img
+
+	&__img {
+		grid-row: span 2;
+		img {
+			object-fit: cover;
+			display: block;
+			width: 100%;
+			height: 100%;
+		}
+	}
+
+	// .services-cards__info
+
+	&__info {
+		@include media-breakpoint-down(sm) {
+			margin-bottom: 15px;
+		}
+	}
+
+	// .services-cards__text
+
+	&__text {
+		p {
+			font-weight: 500;
+			font-size: 12px;
+			line-height: 22px;
+			display: -webkit-box;
+			-webkit-line-clamp: 2;
+			-webkit-box-orient: vertical;
+			overflow: hidden;
+			margin-bottom: 5px;
+		}
+		address {
+			display: none;
+		}
+	}
+	&__title {
+		font-size: 16px;
+		font-weight: 600;
+		line-height: 22px;
+		&.blue {
+			color: $darkBlue;
+		}
+	}	
+
+	&__link {
+		display: inline-block;
+		font-size: 12px;
+		text-decoration: none;
+		color: lighten($darkBlue, 5%);
+		transition: text-decoration 0.3s ease-in-out;
+		@media (any-hover: hover) {
+			&:hover {
+				text-decoration: underline;
+				color: lighten($darkBlue, 5%);
+			}
+		}
+		&.dark {
+			color: $textcolor
+		}
+	}
+	&._show-more {
+		grid-template-columns: 1fr;
+		.services-cards__text {
+			p {
+				display: block;
+				-webkit-line-clamp: 6;
+				-webkit-box-orient: vertical;
+				overflow: hidden;
+				margin-bottom: 24px;
+			}
+			address {
+				display: block;
+				font-size: 12px;
+				span {
+					color: $darkBlue;
+					font-weight: 700;
+				}
+			}
+		}
+		.first-item {
+			order: -1;
+		}
+		.services-cards__img {
+			margin-bottom: 20px;
+			img {
+				object-fit: cover;
+				display: block;
+				width: 100%;
+				height: 100%;
+			}
+		}
+	}
+	&__details {
+		@extend .services-cards__link;
+		&::after {
+			content: attr(data-close);
+		}		
+	}
+	&._show-more &__details {
+		&::after {
+			content: attr(data-open);
+		}		
+	}
+
 }
+.pet-avatar {
+	display: inline-grid;
+	grid-template: auto auto / 43px 100%;
+	column-gap: 10px;
+	&:not(:last-child) {
+		margin-bottom: 34px;
+	}
+	// .pet-avatar__img
+
+	&__img {
+		grid-row: span 2;
+		text-align: center;
+		align-self: center;
+		border: 1px solid $white;
+		border-radius: 100%;
+		overflow: hidden;
+		img {
+			display: block;
+			width: 100%;
+		}
+	}
+
+	// .pet-avatar__name
+
+	&__name {
+		color: lighten($darkBlue, 5%);
+		font-weight: 600;
+		line-height: 18px;
+		align-self: end;
+	}
+
+	// .pet-avatar__date
+
+	&__date {
+		font-size: 12px;
+		line-height: 14px;
+		color: #bababa;
+		align-self: start;
+	}
+}
+
+.contact-block {
+	&:not(:last-child) {
+		margin-bottom: 15px;
+	}
+	// .contact-block__title
+
+	&__title {
+		display: block;
+		font-size: 12px;
+		font-weight: 700;
+		line-height: 16px;
+	}
+
+	// .contact-block__info
+
+	&__info {
+		font-size: 12px;
+		line-height: 18px;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		margin-bottom: 5px;
+		span {
+			display: block;
+		}
+		&.web {
+			font-weight: 700;
+			margin-top: 20px;
+			color: $darkBlue;
+			display: none;
+		}
+	}
+	&__link {
+		@extend .services-cards__link;
+		&.dark {
+			color: $textcolor
+		}
+	}
+}
+.services-cards._show-more {
+	.contact-block {
+		&__info {
+			display: block;
+			span {
+				display: block;
+			}
+			&.web {
+				font-weight: 700;
+				margin-top: 20px;
+				color: $darkBlue;
+				display: block;
+			}
+		}
+	}
+}
+

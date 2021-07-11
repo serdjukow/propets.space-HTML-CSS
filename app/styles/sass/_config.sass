@@ -1,6 +1,16 @@
-//Адаптивный шрифт
+// USER VARIABLES SECTION
 $maxWidthContainer: 1070
 $maxWidth: 1240
+$fontsize: 16px // Body Font Size
+$textcolor: #393939 // Text Color
+$darkBlue: #06B2BB
+$red: #FA5456
+$white: #ffffff
+$boxShadow: #00000029
+$yellow: #FDD219
+$lineheight: 1.65 // Document Line Height
+$userfont: Montserrat, sans-serif // User Font Family
+$systemfont: -apple-system, BlinkMacSystemFont, Arial, sans-serif // System Font Family
 
 //Адаптивное свойство
 @mixin adaptiv-value($property, $startSize, $minSize, $type)
@@ -20,20 +30,6 @@ $maxWidth: 1240
 	@else
 		//Всегда
 		#{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth - 320}))
-
-// USER VARIABLES SECTION
-
-$fontsize: 16px // Body Font Size
-$textcolor: #393939 // Text Color
-$darkBlue: #06B2BB
-$red: #FA5456
-$white: #ffffff
-$boxShadow: #00000029
-$yellow: #FDD219
-$lineheight: 1.65 // Document Line Height
-$userfont: Montserrat, sans-serif // User Font Family
-$systemfont: -apple-system, BlinkMacSystemFont, Arial, sans-serif // System Font Family
-
 // Bootstrap compatible gutter variable => $gutter
 $grid-gutter-width: 30px
 $gutter: $grid-gutter-width
@@ -42,8 +38,6 @@ $gutter: $grid-gutter-width
 
 @import 'node_modules/bootstrap/scss/bootstrap-reboot.scss' // Bootstrap Reboot collection
 @import 'node_modules/bootstrap/scss/mixins/_breakpoints.scss' // Bootstrap Breakpoints mixin
-// @import 'node_modules/bootstrap/scss/bootstrap-grid.scss' // Optional Bootstrap Grid
-// @import 'node_modules/bootstrap/scss/utilities/_sizing.scss' // Optional Bootstrap Utilites
 
 // FONTS LOAD SECTION
 

@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	const menuButton = document.querySelector('.menu-button')
 	const navigationLeft = document.querySelector('.home-page__sidebar-left')
 	const navigationRight = document.querySelector('.home-page__sidebar-right')
-
+	const sideBar = document.querySelector('.home-page__sidebar-left')
 	const li = document.querySelectorAll('.navigation__li')
 	const removeLiActive = () => {
 		li.forEach(elem => elem.classList.remove('_active'))
@@ -31,107 +31,46 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	})
 
-	const sideBar = document.querySelector('.home-page__sidebar-left')
-	fetch('../parts/home-content.html')
-		.then(response => {
-			return response.text()
-		})
-		.then(content => {
-			document.querySelector(".home-page__content").innerHTML = content
-		})
+	const activePage = (dataSet) => {
+		fetch(`../parts/${dataSet}-content.html`)
+			.then(response => {
+				return response.text()
+			})
+			.then(content => {
+				document.querySelector(".home-page__content").innerHTML = content
+			})
+	}
+
+	let activeMenu = JSON.parse(localStorage.getItem('Active-menu'))
+	if (activeMenu) {
+		removeLiActive()
+		removeNavActive()
+		activePage(activeMenu[0])
+		document.querySelector(`.navigation__link[data-menu=${activeMenu[0]}]`).closest('li').classList.add('_active')
+	} else {
+		document.querySelector(`.navigation__link[data-menu="home"]`).closest('li').classList.add('_active')
+	}
 
 	sideBar.addEventListener('click', (event) => {
 		event.preventDefault()
 		let el = event.target
+		let elDataset = el.dataset.menu
+		if (el.dataset.menu) {
+			removeLiActive()
+			removeNavActive()
+			localStorage.setItem("Active-menu", JSON.stringify([elDataset, el.classList]))
+			activePage(elDataset)
+			el.closest('li').classList.add('_active')
+		}
+	})
 
-		switch (el.dataset.menu) {
-			case 'home':
-				removeLiActive()
-				removeNavActive()
-				el.closest('li').classList.add('_active')
-				fetch('../parts/home-content.html')
-					.then(response => {
-						return response.text()
-					})
-					.then(content => {
-						document.querySelector(".home-page__content").innerHTML = content
-					})
-				break
-			case 'lost':
-				removeLiActive()
-				removeNavActive()
-				el.closest('li').classList.add('_active')
-				fetch('../parts/lost-content.html')
-					.then(response => {
-						return response.text()
-					})
-					.then(content => {
-						document.querySelector(".home-page__content").innerHTML = content
-					})
-				break
-			case 'found':
-				removeLiActive()
-				removeNavActive()
-				el.closest('li').classList.add('_active')
-				fetch('../parts/found-content.html')
-					.then(response => {
-						return response.text()
-					})
-					.then(content => {
-						document.querySelector(".home-page__content").innerHTML = content
-					})
-				break
-			case 'hotels':
-				removeLiActive()
-				removeNavActive()
-				el.closest('li').classList.add('_active')
-				fetch('../parts/hotels-content.html')
-					.then(response => {
-						return response.text()
-					})
-					.then(content => {
-						document.querySelector(".home-page__content").innerHTML = content
-					})
-				break
-			case 'walking':
-				removeLiActive()
-				removeNavActive()
-				el.closest('li').classList.add('_active')
-				fetch('../parts/walking-content.html')
-					.then(response => {
-						return response.text()
-					})
-					.then(content => {
-						document.querySelector(".home-page__content").innerHTML = content
-					})
-				break
-			case 'fostering':
-				removeLiActive()
-				removeNavActive()
-				el.closest('li').classList.add('_active')
-				fetch('../parts/fostering-content.html')
-					.then(response => {
-						return response.text()
-					})
-					.then(content => {
-						document.querySelector(".home-page__content").innerHTML = content
-					})
-				break
-			case 'vethelp':
-				removeLiActive()
-				removeNavActive()
-				el.closest('li').classList.add('_active')
-				fetch('../parts/vethelp-content.html')
-					.then(response => {
-						return response.text()
-					})
-					.then(content => {
-						document.querySelector(".home-page__content").innerHTML = content
-					})
-				break
-
-			default:
-				break
+	const homePageContent = document.querySelector('.home-page__content')
+	homePageContent.addEventListener('click', (event) => {
+		event.preventDefault()
+		let el = event.target
+		let parent = el.closest('.services-cards')
+		if (el.classList.contains('services-cards__details')) {
+			parent.classList.toggle('_show-more')
 		}
 	})
 })
