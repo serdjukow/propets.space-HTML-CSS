@@ -1,9 +1,15 @@
 .home-page {
-	&__content {
+
+	&__container {
 		max-width: 536px;
 		width: 100%;
 		margin: 0 auto;
 		padding: 30px 15px;
+	}
+
+	&__row {
+		position: relative;
+		min-height: 800px;
 	}
 
 	// .home-page__title
@@ -12,7 +18,7 @@
 		font-size: 16px;
 		font-weight: 700;
 		color: $darkBlue;
-		margin-bottom: 25px;
+		margin-bottom: 15px;
 		&::after {
 			content: "";
 			display: block;
@@ -21,6 +27,11 @@
 			background-color: #707070;
 			margin-top: 8px;
 		}
+	}
+
+	&__info-link {
+		font-size: 12px;
+		margin-bottom: 25px;
 	}
 }
 
@@ -113,6 +124,13 @@
 	}
 	&._show-more {
 		grid-template-columns: 1fr;
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		background: #fff;
+		border-bottom: none;
 		.services-cards__text {
 			p {
 				display: block;
@@ -254,3 +272,81 @@
 	}
 }
 
+.pets {
+
+	// .pets__content
+
+	&__content {
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		margin: 0 -8px;
+		min-height: 100%;
+	}
+}
+.pets-card {
+	max-width: 29%;
+	margin: 0 8px 25px 8px;
+	align-self: flex-start;
+	align-content: flex-start;
+	// .pets-card__title
+
+	&__title {
+		font-size: 20px;
+		font-weight: 700;
+		line-height: 22px;
+		color: lighten($textcolor, 20%);
+	}
+
+	// .pets-card__address
+
+	&__address {
+		font-size: 10px;	
+		font-weight: 500;
+		margin-bottom: 6px;
+		&::before {
+			color: $darkBlue;
+			width: 7px;
+			margin-right: 8px;
+		}
+	}
+
+	// .pets-card__img
+
+	&__img {
+		margin-bottom: 5px;
+		img {
+			display: block;
+			width: 100%;
+		}
+	}
+	&__details {
+		@extend .services-cards__details;
+		position: relative;
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		flex-direction: row-reverse;
+		transition: color .3s ease-in-out;
+		@media (any-hover: hover) {
+			&:hover {
+				color: lighten($textcolor, 20%);
+				text-decoration: none;
+			}
+		}
+		&::before {
+			margin-left: 5px;
+			font-size: 10px;
+			color: lighten($textcolor, 20%);
+		}
+	}
+}
+
+.services-cards {
+
+	// .services-cards__details
+
+	&__details {
+
+	}
+}

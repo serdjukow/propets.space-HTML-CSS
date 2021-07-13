@@ -1,10 +1,19 @@
+import MicroModal from 'micromodal';
+
 document.addEventListener('DOMContentLoaded', () => {
+
+	// Modal
+
+	MicroModal.init({
+		openTrigger: 'data-micromodal-open'
+	})
 
 	const menuButton = document.querySelector('.menu-button')
 	const navigationLeft = document.querySelector('.home-page__sidebar-left')
 	const navigationRight = document.querySelector('.home-page__sidebar-right')
 	const sideBar = document.querySelector('.home-page__sidebar-left')
 	const li = document.querySelectorAll('.navigation__li')
+
 	const removeLiActive = () => {
 		li.forEach(elem => elem.classList.remove('_active'))
 	}
@@ -25,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		toggleNavActive()
 	})
 
-	window.addEventListener('resize', function (event) {
+	window.addEventListener('resize', function () {
 		if (window.innerWidth > 768) {
 			removeNavActive()
 		}
@@ -61,6 +70,23 @@ document.addEventListener('DOMContentLoaded', () => {
 			localStorage.setItem("Active-menu", JSON.stringify([elDataset, el.classList]))
 			activePage(elDataset)
 			el.closest('li').classList.add('_active')
+		}
+	})
+
+	const header = document.querySelector('.header')
+	header.addEventListener('click', (event) => {
+		event.preventDefault()
+		let el = event.target
+		if (el.closest('button').classList.contains('red')) {
+			removeLiActive()
+			removeNavActive()
+			fetch(`../parts/lost-page-form.html`)
+			.then(response => {
+				return response.text()
+			})
+			.then(content => {
+				document.querySelector(".home-page__content").innerHTML = content
+			})
 		}
 	})
 

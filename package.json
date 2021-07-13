@@ -34,5 +34,8 @@
 		"gulp-stylus": "^2.7.0",
 		"sass": "^1.35.1",
 		"webpack-stream": "^6.1.2"
+	},
+	"dependencies": {
+		"micromodal": "^0.4.6"
 	}
 }
