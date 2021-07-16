@@ -105,6 +105,7 @@ body
 		width: 100%
 
 .button
+	font-size: 16px
 	font-weight: 500
 	display: flex
 	align-items: center
@@ -114,6 +115,7 @@ body
 	border: 1px solid $white
 	border-radius: 20px
 	color: $white
+	cursor: pointer
 	transition: background-color .3s ease-in-out, border .3s ease-in-out, color .3s ease-in-out
 	&::before
 		margin-right: 20px
@@ -137,6 +139,13 @@ body
 		color: inherit
 		&:hover
 			color: $white
+	&.border-blue
+		border: 1px solid darken($darkBlue, 2%)
+		color: darken($darkBlue, 2%)
+		@media (any-hover: hover)
+		&:hover
+			border: 1px solid $yellow
+			color: inherit
 	@include media-breakpoint-down(sm)
 		span
 			display: none
@@ -153,3 +162,5 @@ body
 		@media (any-hover: hover)
 			&:hover
 				text-decoration: none
+
+

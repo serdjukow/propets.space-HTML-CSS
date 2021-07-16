@@ -1,22 +1,93 @@
-<div class="home-page__container lost-page-form">
+<div class="home-page__container">
 	<h2 class="home-page__title">Lost your buddy? Keep calm and complete the form.</h2>
-	<div class="home-page__row lost-page-form__content">
-		<form class="lost-page-form__form" action="">
-			<div class="lost-page-form__items">
-				<div class="lost-page-form__item">
-					<label for="">Nickname</label>
-					<input type="text" placeholder="Uncle Sam">
-				</div>
-				<div class="lost-page-form__item">
-					<label for="">Type:</label>
-					<select>
-						<option>Dog</option>
-						<option>Big dog</option>
-						<option>Puppy</option>
-						<option>Puppy</option>
-					  </select>
-				</div>
+	<div class="home-page__row lost-page">
+
+			<div class="lost-page__content">
+				<form action="#" id="form" class="lost-page__form">
+					<div class="lost-page__items">
+						<div class="lost-page__item">
+							<label>Nickname:</label>
+							<input type="text" placeholder="Uncle Sam" />
+						</div>
+						<div class="lost-page__item">
+							<label>Type:</label>
+							<select>
+								<option>Dog</option>
+								<option>Big dog</option>
+								<option>Cat</option>
+								<option>Parrot</option>
+								<option>Puppy</option>
+							</select>
+						</div>
+						<div class="lost-page__item">
+							<label>Gender:</label>
+							<select>
+								<option>Male</option>
+								<option>Female</option>
+							</select>
+						</div>
+						<div class="lost-page__item">
+							<label>Breed:</label>
+							<input type="text" placeholder="Golden Retriever" />
+						</div>
+						<div class="lost-page__item">
+							<label>Color:</label>
+							<input type="text" placeholder="Beige" />
+						</div>
+						<div class="lost-page__item">
+							<label>Height:</label>
+							<select>
+								<option>45-75 cm</option>
+								<option>75-100 cm</option>
+							</select>
+						</div>
+					</div>
+					<div class="lost-page__items items-img">
+						<img src="../images/dist/lost-form-img.png" alt="dog-walking" />
+					</div>
+					<div class="lost-page__items">
+						<div class="lost-page__item">
+							<label>Distinktive features:
+								<span>up to 60 char</span>
+							</label>
+							<textarea rows="2"
+								placeholder="blue collar with stars, no left ear, damaged tail."></textarea>
+						</div>
+						<div class="lost-page__item">
+							<label>Description:
+								<span>up to 150 char</span>
+							</label>
+							<textarea rows="6"
+								placeholder="brown fox jumps over a lazy dog. DJs flock by when jhkjk jhgMTV ax quiz prog. Junk MTV quiz graced by fox"></textarea>
+						</div>
+						<div class="lost-page__item">
+							<label>Location:</label>
+							<textarea rows="2" placeholder="Oliver Platz, Berlin"></textarea>
+						</div>
+					</div>
+					<div class="lost-page__items">
+						<div class="lost-page__item item-fileLoad">
+							<div class="item-fileLoad__container">
+								<input type="file" name="file[]" id="file" class="item-fileLoad__input"
+									data-multiple-caption="{count} files selected" multiple="multiple" />
+								<label for="file">
+									<span>img1.jpg</span>
+									<div class="button border-blue">Load image</div>
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="lost-page__items">
+						<div class="lost-page__item">
+							<label>Contacts:</label>
+							<input type="text" placeholder="Phone*" required />
+							<input type="text" placeholder="Email" />
+						</div>
+						<div class="lost-page__item">
+							<button class="button blue icon-paw" type="submit">Publish</button>
+						</div>
+					</div>
+				</form>
 			</div>
-		</form>
 	</div>
 </div>

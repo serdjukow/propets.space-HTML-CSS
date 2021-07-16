@@ -1,12 +1,100 @@
 import MicroModal from 'micromodal';
+import gsap from "gsap";
+let cx, cy, mouseX, mouseY, posX, posY, clientX, clientY, dx, dy, tiltx, tilty, request, radius, degree
 
 document.addEventListener('DOMContentLoaded', () => {
+
+
+
+	const body = document.querySelector('body')
+	cx = window.innerWidth / 2
+	cy = window.innerHeight / 2
+
+
+	body.addEventListener("mousemove", event => {
+		clientX = event.pageX;
+		clientY = event.pageY;
+		request = requestAnimationFrame(updateMe)
+
+	})
+
+
+	function updateMe() {
+		dx = clientX - cx
+		dy = clientY - cy
+		tiltx = dy / cy
+		tilty = dx / cx
+		radius = Math.sqrt(Math.pow(tiltx, 2) + Math.pow(tilty, 2))
+		degree = radius * 12
+		gsap.to(
+			'.modal__container', 1, { transform: `rotate3d( ${tiltx}, ${tilty}, 0, ${degree}deg)` }
+		)
+	}
+
+	gsap.fromTo(".button-lost", {
+		x: -320,
+	}, {
+		x: 0,
+		duration: 1,
+	})
+	gsap.fromTo(".button-pet", {
+		x: -320,
+	}, {
+		x: 0,
+		duration: 2
+	})
+	gsap.fromTo(".welcome__img", {
+		opacity: 0
+	}, {
+		opacity: 1,
+		duration: 3
+	})
+	gsap.fromTo(".block-info__img", {
+		opacity: 0
+	}, {
+		opacity: 1,
+		duration: 4
+	})
+
+
+	const text = document.querySelector('.welcome__title');
+
+	if (text) {
+		const splitText = (el) => {
+			el.innerHTML = el.textContent.replace(/(\S*)/g, m => {
+				return `<div class="word">` +
+					m.replace(/(-|#|@)?\S(-|#|@)?/g, "<div class='letter'>$&</div>") +
+					`</div>`;
+			});
+			return el;
+		};
+
+		const split = splitText(text);
+
+		function random(min, max) {
+			return (Math.random() * (max - min)) + min;
+		}
+
+		Array.from(split.querySelectorAll('.letter')).forEach((el, idx) => {
+			gsap.from(el, 1, {
+				opacity: 0,
+				scale: .1,
+				x: random(-500, 500),
+				y: random(-500, 500),
+				z: random(-500, 500),
+				delay: idx * 0.02,
+				repeat: 0,
+			})
+		});
+	}
 
 	// Modal
 
 	MicroModal.init({
 		openTrigger: 'data-micromodal-open'
 	})
+
+
 
 	const menuButton = document.querySelector('.menu-button')
 	const navigationLeft = document.querySelector('.home-page__sidebar-left')
@@ -73,20 +161,20 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	})
 
-	const header = document.querySelector('.header')
-	header.addEventListener('click', (event) => {
+	const headerButton = document.querySelector('.button.red')
+	headerButton.addEventListener('click', (event) => {
 		event.preventDefault()
 		let el = event.target
 		if (el.closest('button').classList.contains('red')) {
 			removeLiActive()
 			removeNavActive()
 			fetch(`../parts/lost-page-form.html`)
-			.then(response => {
-				return response.text()
-			})
-			.then(content => {
-				document.querySelector(".home-page__content").innerHTML = content
-			})
+				.then(response => {
+					return response.text()
+				})
+				.then(content => {
+					document.querySelector(".home-page__content").innerHTML = content
+				})
 		}
 	})
 
@@ -99,4 +187,6 @@ document.addEventListener('DOMContentLoaded', () => {
 			parent.classList.toggle('_show-more')
 		}
 	})
+
+
 })
