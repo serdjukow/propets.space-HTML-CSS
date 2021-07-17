@@ -1,3 +1,86 @@
+.noselect {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.lost-page__item {
+	position: relative;
+	button {
+		transition: 500ms;
+		
+	}
+
+	button svg {
+		fill: #07cad4;
+		transition: 500ms;
+		font-size: 1px;
+	}
+	
+	button:hover span,
+	button:focus span {
+		display: none;
+		content: none;
+	}
+
+	.button {
+		min-width: 180px;
+		&:focus,
+		&:hover {
+			&::before {
+				content: none;
+				color: transparent;
+				font-size: 0;
+			}
+		}
+	}
+
+	button:hover {
+		animation: shake 100ms linear infinite;
+		justify-content: center;
+	}
+
+	button:hover svg,
+	button:focus svg {
+		width: 40px;
+		height: 40px;
+	}
+
+	button:focus {
+		outline: none;
+		justify-content: center;
+		animation: blast 1s linear forwards;
+	}
+
+	button:hover,
+	button:focus {
+		background: transparent;
+		border: none;
+	}
+
+	@keyframes shake {
+		0% {
+			transform: translateX(0);
+		}
+		100% {
+			transform: translateX(-2px);
+		}
+	}
+
+	@keyframes blast {
+		0% {
+			transform: translateY(0);
+		}
+		100% {
+			transform: translateY(-100vh);
+		}
+	}
+}
+
 input,
 textarea {
 	outline: 0;
@@ -36,16 +119,14 @@ textarea:required:valid {
 				grid-column: 1 / span 1;
 				.lost-page__item {
 					margin-top: 15px;
-					
 				}
-			&__item-container {
-				flex: 1 1 50%;
-			}	
-
+				&__item-container {
+					flex: 1 1 50%;
+				}
 			}
 			.lost-page__item {
 				&:first-child {
-					padding: 35px 0 28px 0;	
+					padding: 35px 0 28px 0;
 					input:not(:last-child) {
 						margin-right: 15px;
 						margin-bottom: 15px;

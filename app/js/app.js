@@ -1,7 +1,9 @@
 import MicroModal from 'micromodal';
-import gsap from "gsap";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/scrolltrigger"
+gsap.registerPlugin(ScrollTrigger)
 let cx, cy, mouseX, mouseY, posX, posY, clientX, clientY, dx, dy, tiltx, tilty, request, radius, degree
-import ScrollTrigger from "scrolltrigger"
+
 document.addEventListener('DOMContentLoaded', () => {
 
 
@@ -11,79 +13,106 @@ document.addEventListener('DOMContentLoaded', () => {
 	cy = window.innerHeight / 2
 
 
-	body.addEventListener("mousemove", event => {
-		clientX = event.pageX;
-		clientY = event.pageY;
-		request = requestAnimationFrame(updateMe)
-
-	})
 
 
-	function updateMe() {
-		dx = clientX - cx
-		dy = clientY - cy
-		tiltx = dy / cy
-		tilty = dx / cx
-		radius = Math.sqrt(Math.pow(tiltx, 2) + Math.pow(tilty, 2))
-		degree = radius * 12
-		gsap.to(
-			'.modal__container', 1, { transform: `rotate3d( ${tiltx}, ${tilty}, 0, ${degree}deg)` }
-		)
+	const modalContainer = document.querySelector('.modal__container')
+
+	if (modalContainer) {
+		body.addEventListener("mousemove", event => {
+			clientX = event.pageX;
+			clientY = event.pageY;
+			request = requestAnimationFrame(updateMe)
+
+		})
+		function updateMe() {
+			dx = clientX - cx
+			dy = clientY - cy
+			tiltx = dy / cy
+			tilty = dx / cx
+			radius = Math.sqrt(Math.pow(tiltx, 2) + Math.pow(tilty, 2))
+			degree = radius * 12
+			gsap.to(
+				'.modal__container', 1, { transform: `rotate3d( ${tiltx}, ${tilty}, 0, ${degree}deg)` }
+			)
+		}
 	}
 
 
 
-	gsap.registerPlugin(ScrollTrigger);
 
-	gsap.from(".welcome__img", {
-		scrollTrigger: {
-			trigger: ".welcome__img",
-			//end: () => "+=" + document.querySelector(".welcome__img").offsetWidth,
-			//toggleActions: "restart none none none"
-		},
-		opacity: 0,
-		duration: 2,
-		scale: 0.7
-	});
+	const welcomeImg = document.querySelector('.welcome__img')
+	const buttonLost = document.querySelector('.button-lost')
+	const buttonPet = document.querySelector('.button-pet')
+	const blockIinfoImg = document.querySelector('.block-info__img')
+	const blockInfoList = document.querySelector('.block-info__list')
+	const bannerRow = document.querySelector('.banner__row')
 
-	gsap.from(".button-lost", {
-		scrollTrigger: {
-			trigger: ".button-lost",
-			//toggleActions: "restart pause none pause",			
-		},
-		x: -320,
-		duration: 1.5,
-	});
+	if (welcomeImg) {
+		gsap.from(welcomeImg, {
+			scrollTrigger: {
+				trigger: welcomeImg,
+				start: "-200px center",
+				//end: () => "+=" + document.querySelector(".welcome__img").offsetWidth,
+				toggleActions: "restart pause none pause"
+			},
+			opacity: 0,
+			duration: 2,
+			scale: 0.7
+		})
+	}
+	if (buttonLost) {
+		gsap.from(buttonLost, {
+			scrollTrigger: {
+				trigger: buttonLost,
+				//toggleActions: "restart pause none pause",			
+			},
+			x: -320,
+			duration: 1.5,
+		})
+	}
+	if (buttonPet) {
+		gsap.from(buttonPet, {
+			scrollTrigger: {
+				trigger: buttonPet,
+				//toggleActions: "restart pause none pause"
+			},
+			x: -280,
+			duration: 2,
+		})
+	}
 
+	if (blockIinfoImg) {
+		gsap.from(blockIinfoImg, {
+			scrollTrigger: {
+				trigger: blockIinfoImg,
+				toggleActions: "restart pause none pause"
+			},
+			opacity: 0,
+			duration: 2,
+			scale: 0.7
+		})
+	}
+	if (blockInfoList) {
+		gsap.from(blockInfoList, {
+			scrollTrigger: {
+				trigger: blockInfoList,
+				toggleActions: "restart pause none pause"
+			},
+			x: 320,
+			duration: 1,
+		})
+	}
+	if (bannerRow) {
+		gsap.from(bannerRow, {
+			scrollTrigger: {
+				trigger: bannerRow,
+				toggleActions: "restart pause none pause"
+			},
+			opacity: 0,
+			duration: 1.5,
+		})
+	}
 
-
-	gsap.from(".button-pet", {
-		scrollTrigger: {
-			trigger: ".button-pet",
-			//toggleActions: "restart pause none pause"
-		},
-		x: -280,
-		duration: 2,
-	})
-
-	gsap.from(".block-info__img", {
-		scrollTrigger: {
-			trigger: ".block-info__img",
-			toggleActions: "restart pause none pause"
-		},
-		opacity: 0,
-		duration: 2,
-		scale: 0.7
-	});
-
-	gsap.from(".block-info__list", {
-		scrollTrigger: {
-			trigger: ".block-info__img",
-			toggleActions: "restart pause reverse pause"
-		},
-		x: 320,
-		duration: 1,
-	});
 
 
 
@@ -121,6 +150,37 @@ document.addEventListener('DOMContentLoaded', () => {
 			})
 		});
 	}
+
+
+
+
+
+	let i = 0;
+	let placeholderName = "";
+	let placeholder = "";
+	const name = "Helen Johnson";
+	const email = "example@domain.com";
+	const speed = 120;
+
+	function type() {
+		placeholderName += name.charAt(i);
+		placeholder += email.charAt(i);
+		document.querySelector("input[type=text]").setAttribute("placeholder", placeholderName);
+		document.querySelector("input[type=email]").setAttribute("placeholder", placeholder);
+		i++;
+		setTimeout(type, speed);
+	}
+	const buttonSignIn = document.querySelectorAll(`[data-micromodal-open="modal-1"]`)
+	if (buttonSignIn) {
+		buttonSignIn.forEach( button =>  button.addEventListener('click', () => {
+			type()
+		}))
+	}
+
+
+
+
+
 
 	// Modal
 

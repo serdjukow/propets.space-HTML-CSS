@@ -34,11 +34,11 @@
 		"gulp-sass-glob": "^1.1.0",
 		"gulp-stylus": "^2.7.0",
 		"sass": "^1.35.1",
+		"scroll-triggers": "^4.4.0",
+		"scrolltrigger": "^1.0.1",
 		"webpack-stream": "^6.1.2"
 	},
 	"dependencies": {
-		"micromodal": "^0.4.6",
-		"scroll-triggers": "^4.4.0",
-		"scrolltrigger": "^1.0.1"
+		"micromodal": "^0.4.6"
 	}
 }
