@@ -18,7 +18,7 @@
 		position: absolute;
 		top: 0;
 		left: 3px;
-		top:-3px;
+		top: -3px;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -29,13 +29,10 @@
 		transition: all 0.1s ease;
 		z-index: 100;
 		padding: 0 15px;
-		&::before {
-			content: "";
-		}
 		perspective: 500px;
 	}
 	&__container {
-		background-color: rgba(#fff, .8);
+		background-color: rgba(#fff, 0.8);
 		padding-top: 28px;
 		padding-bottom: 28px;
 		@include adaptiv-value("padding-right", 48, 15, 1);
@@ -44,6 +41,27 @@
 		max-width: 720px;
 		box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
 		transform-style: preserve-3d;
+		transform: translateZ(0px);
+		&::before,
+		&::after {
+			content: "";
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;			
+			border: 4px solid rgba(#fff, 0.8);
+			box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2) inset;
+			pointer-events: none;
+		}
+		&::before {
+			transform: translateZ(4px);
+			
+		}
+		&::after {
+			transform: translateZ(8px);
+		}
 	}
 	&__header-logo {
 		align-self: flex-start;
@@ -155,7 +173,7 @@
 			padding-right: 15px;
 			p {
 				font-size: 10px;
-				color: #BABABA;
+				color: #bababa;
 				margin: 0;
 				margin-bottom: 10px;
 			}
@@ -168,10 +186,10 @@
 		}
 	}
 
-	&__form-item {		
+	&__form-item {
 		display: flex;
 		margin-bottom: 13px;
-		align-items: flex-start;		
+		align-items: flex-start;
 		label {
 			flex: 0 0 75px;
 			display: flex;
@@ -255,7 +273,6 @@
 			transition: opacity 0.3s ease;
 		}
 
-
 		select {
 			@extend input;
 			color: #393939;
@@ -311,6 +328,7 @@
 	// .modal__form-buttons
 
 	&__form-buttons {
+		position: relative;
 		flex: 1 1 50%;
 		display: flex;
 		justify-content: flex-end;

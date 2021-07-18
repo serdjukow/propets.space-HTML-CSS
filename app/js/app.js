@@ -172,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 	const buttonSignIn = document.querySelectorAll(`[data-micromodal-open="modal-1"]`)
 	if (buttonSignIn) {
-		buttonSignIn.forEach( button =>  button.addEventListener('click', () => {
+		buttonSignIn.forEach(button => button.addEventListener('click', () => {
 			type()
 		}))
 	}
@@ -242,18 +242,20 @@ document.addEventListener('DOMContentLoaded', () => {
 		document.querySelector(`.navigation__link[data-menu="home"]`).closest('li').classList.add('_active')
 	}
 
-	sideBar.addEventListener('click', (event) => {
-		event.preventDefault()
-		let el = event.target
-		let elDataset = el.dataset.menu
-		if (el.dataset.menu) {
-			removeLiActive()
-			removeNavActive()
-			localStorage.setItem("Active-menu", JSON.stringify([elDataset, el.classList]))
-			activePage(elDataset)
-			el.closest('li').classList.add('_active')
-		}
-	})
+	if (sideBar) {
+		sideBar.addEventListener('click', (event) => {
+			event.preventDefault()
+			let el = event.target
+			let elDataset = el.dataset.menu
+			if (el.dataset.menu) {
+				removeLiActive()
+				removeNavActive()
+				localStorage.setItem("Active-menu", JSON.stringify([elDataset, el.classList]))
+				activePage(elDataset)
+				el.closest('li').classList.add('_active')
+			}
+		})
+	}
 
 	const headerButton = document.querySelector('.button.red')
 	headerButton.addEventListener('click', (event) => {
@@ -273,14 +275,15 @@ document.addEventListener('DOMContentLoaded', () => {
 	})
 
 	const homePageContent = document.querySelector('.home-page__content')
-	homePageContent.addEventListener('click', (event) => {
-		event.preventDefault()
-		let el = event.target
-		let parent = el.closest('.services-cards')
-		if (el.classList.contains('services-cards__details')) {
-			parent.classList.toggle('_show-more')
-		}
-	})
-
+	if (homePageContent) {
+		homePageContent.addEventListener('click', (event) => {
+			event.preventDefault()
+			let el = event.target
+			let parent = el.closest('.services-cards')
+			if (el.classList.contains('services-cards__details')) {
+				parent.classList.toggle('_show-more')
+			}
+		})
+	}
 
 })
