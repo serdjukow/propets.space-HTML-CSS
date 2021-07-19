@@ -26,7 +26,11 @@
 		display: none;
 		content: none;
 	}
-
+	@include media-breakpoint-down(sm) {
+		span {			
+				display: block;
+			}
+		}
 	.button {
 		min-width: 180px;
 		&:focus,

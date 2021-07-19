@@ -113,13 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		})
 	}
 
-
-
-
-
-
-
-
 	const text = document.querySelector('.welcome__title');
 
 	if (text) {
@@ -154,26 +147,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-
-	let i = 0;
-	let placeholderName = "";
-	let placeholder = "";
-	const name = "Helen Johnson";
-	const email = "example@domain.com";
-	const speed = 120;
-
-	function type() {
-		placeholderName += name.charAt(i);
-		placeholder += email.charAt(i);
-		document.querySelector("input[type=text]").setAttribute("placeholder", placeholderName);
-		document.querySelector("input[type=email]").setAttribute("placeholder", placeholder);
-		i++;
-		setTimeout(type, speed);
-	}
 	const buttonSignIn = document.querySelectorAll(`[data-micromodal-open="modal-1"]`)
 	if (buttonSignIn) {
-		buttonSignIn.forEach(button => button.addEventListener('click', () => {
-			type()
+		let i = 0;
+		let placeholderName = "";
+		let placeholder = "";
+		const name = "Helen Johnson";
+		const email = "example@domain.com";
+		const speed = 120;
+		buttonSignIn.forEach(button => button.addEventListener('click', function type() {
+			placeholderName += name.charAt(i);
+			placeholder += email.charAt(i);
+			document.querySelector("input[type=text]").setAttribute("placeholder", placeholderName);
+			document.querySelector("input[type=email]").setAttribute("placeholder", placeholder);
+			i++;
+			setTimeout(type, speed);
 		}))
 	}
 
@@ -272,6 +260,21 @@ document.addEventListener('DOMContentLoaded', () => {
 					document.querySelector(".home-page__content").innerHTML = content
 				})
 		}
+	})
+
+	const userCardInfo = document.querySelector('.user-card__info')
+	userCardInfo.addEventListener('click', (event) => {
+		event.preventDefault()
+		removeLiActive()
+		removeNavActive()
+		fetch(`../parts/my-profile.html`)
+			.then(response => {
+				return response.text()
+			})
+			.then(content => {
+				document.querySelector(".home-page__content").innerHTML = content
+			})
+
 	})
 
 	const homePageContent = document.querySelector('.home-page__content')

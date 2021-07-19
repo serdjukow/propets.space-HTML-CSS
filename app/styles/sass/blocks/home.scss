@@ -1,13 +1,10 @@
 .home-page {
 	position: relative;
 	display: grid;
-	grid-template-columns: 1fr 750px 1fr;
+	grid-template-columns: 1fr minmax(250px, 750px) 1fr;
 	grid-template-rows: auto;
 	min-height: calc(100vh - 70px);
 	margin-top: 70px;
-	@include media-breakpoint-down(xl) {
-		grid-template-columns: 1fr auto 1fr;
-	}
 	@include media-breakpoint-down(md) {
 		display: block;
 		padding-left: 55px;
@@ -216,6 +213,13 @@
 		width: 100%;
 		max-width: 140px;
 		min-width: 70px;
+		cursor: pointer;
+		transition: opacity .3s ease-in-out;
+		@media (any-hover: hover) {
+			&:hover {
+				opacity: .6;
+			}
+		}
 		@include media-breakpoint-down(xl) {
 			grid-template: auto auto / 35px 1fr;
 		}
