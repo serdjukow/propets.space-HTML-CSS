@@ -23,7 +23,7 @@
 			left: 0;
 			bottom: 0;
 			transform: translateX(-105px);
-			padding: 30px 5px 15px 0;
+			padding: 20px 5px 15px 0;
 			&._active {
 				transform: translateX(0);
 			}
@@ -53,38 +53,6 @@
 .navigation {
 	&:not(:last-child) {
 		margin-bottom: 90px;
-	}
-
-	.menu-button {
-		width: 25px;
-		margin-bottom: 20px;
-		margin-right: 13px;
-		display: none;
-		color: $white;
-		@include media-breakpoint-down(md) {
-			display: inline-block;
-		}
-		svg {
-			width: 100%;
-			transform: rotate(-90deg);
-			transition: transform 0.3s ease-in-out;
-		}
-		&._active {
-			svg {
-				transform: rotate(90deg);
-			}
-		}
-		@media (any-hover: hover) {
-			&:hover {
-				background-color: transparent;
-			}
-		}
-		&._active {
-			background-color: transparent;
-			.navigation__link {
-				color: $white;
-			}
-		}
 	}
 
 	// .navigation__list

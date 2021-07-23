@@ -303,97 +303,31 @@
 	}
 }
 
-.logo {
-	position: relative;
-	width: 145px;
-	height: 35px;
-	overflow: visible;
-	.text-line {
-		stroke-dasharray: 500;
-		stroke-dashoffset: 500;
-		animation: dashWite 5s linear forwards, fillingWhite 3s ease-in forwards;
-		stroke-width: 1px;
-		stroke: #d6d6d6;
-		stroke-width: 1;
-
-		@keyframes dashWite {
-			to {
-				stroke-dashoffset: 0;
-			}
-		}
-
-		@keyframes fillingWhite {
-			0%,
-			90% {
-				fill: rgba(#ffffff, 0.8);
-				fill-opacity: 0;
-			}
-			100% {
-				fill: rgba(#ffffff, 0.8);
-				fill-opacity: 1;
-			}
-		}
-	}
-}
-
-.logo.logo-blue {
-	position: relative;
-	width: 145px;
-	height: 40px;
-	.text-line {
-		display: inline-block;
-		stroke-dasharray: 500;
-		stroke-dashoffset: 500;
-		animation: dashBlue 5s linear forwards, fillingBlue 3s ease-in forwards;
-		stroke-width: 1px;
-		stroke: #039ba3;
-		stroke-width: 1;
-		overflow: visible;
-	}
-
-	@keyframes dashBlue {
-		to {
-			stroke-dashoffset: 0;
-		}
-	}
-
-	@keyframes fillingBlue {
-		0%,
-		90% {
-			fill: rgba(#06b2bb, 0.8);
-			fill-opacity: 0;
-		}
-		100% {
-			fill: rgba(#06b2bb, 0.8);
-			fill-opacity: 1;
-		}
-	}
-}
-
 .welcome__logo {
-	display: block;
-	.text-line {
-		stroke-dasharray: 500;
-		stroke-dashoffset: 500;
-		animation: dashWite 5s linear forwards, fillingWhite 5s ease-in forwards;
+	@extend .logo;
+	@include adaptiv-value("width", 79, 60, 1);
+	& .text-line {
+		width: 100%;
+		animation: dashWiteWel 5s linear forwards, fillingWhiteWel 5s ease-in forwards;
 		stroke-width: 1px;
 		stroke: #ffffff;
 		overflow: visible;
-		@keyframes dashWite {
+		@keyframes dashWiteWel {
 			to {
 				stroke-dashoffset: 0;
 			}
 		}
 
-		@keyframes fillingWhite {
+		@keyframes fillingWhiteWel {
 			0%,
 			90% {
-				fill: rgba(#ffffff, 0.8);
+				fill: rgba(#ffffff, 1);
 				fill-opacity: 0;
 			}
 			100% {
-				fill: rgba(#ffffff, 0.8);
+				fill: rgba(#ffffff, 1);
 				fill-opacity: 1;
+				stroke: transparent;
 			}
 		}
 	}

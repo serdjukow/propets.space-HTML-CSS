@@ -1,6 +1,7 @@
 .modal {
 	position: relative;
 	overflow: hidden;
+	overflow-y: auto;
 	z-index: 100;
 	width: 100%;
 	height: 100%;
@@ -9,7 +10,7 @@
 	left: 0;
 	display: flex;
 	background-color: $darkBlue;
-	background-image: url(../../../images/dist/bg/bg-gray.png);
+	background-image: url(./../images/dist/bg/bg-gray.png);
 	background-position: center center;
 	color: #08cfda;
 	// .modal__bg
@@ -22,7 +23,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		background-image: url(../../../images/dist/bg/bg-green.png);
+		background-image: url(./../images/dist/bg/bg-green.png);
 		background-position: center center;
 		width: 100%;
 		min-height: 100%;
@@ -30,8 +31,11 @@
 		z-index: 100;
 		padding: 0 15px;
 		perspective: 500px;
+		@include media-breakpoint-down(lg) {
+			background-attachment: fixed;
+		}
 	}
-	&__container {
+		&__container {
 		background-color: rgba(#fff, 0.8);
 		padding-top: 28px;
 		padding-bottom: 28px;
@@ -40,8 +44,12 @@
 		position: relative;
 		max-width: 720px;
 		box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
-		transform-style: preserve-3d;
-		transform: translateZ(0px);
+		transform-style: flat;
+		@include media-breakpoint-down(lg) {
+			transform-style: flat;
+			transform: translate(0) !important;
+			margin: 20px 0;
+		}
 		&::before,
 		&::after {
 			content: "";
@@ -76,7 +84,7 @@
 			position: relative;
 			display: flex;
 			align-items: center;
-			border-top: 1px solid darken($color: $darkBlue, $amount: 3%);
+			border-top: 1px solid darken($darkBlue, 3%);
 			margin-bottom: 20px;
 			box-shadow: 0 3px 6px #00000029;
 			label {
@@ -167,7 +175,7 @@
 		flex-direction: column;
 		justify-content: center;
 		padding-right: 20px;
-		min-height: 120px;
+		min-height: 140px;
 		&.text {
 			justify-content: flex-end;
 			padding-right: 15px;
@@ -198,32 +206,10 @@
 			align-items: flex-end;
 			text-align: end;
 			margin-top: 3px;
-			font-size: 12px;
-			font-weight: 500;
-			color: #393939;
 			margin-right: 19px;
-			line-height: 14px;
-
-			span {
-				display: block;
-				color: lighten(#06b2bb, 10%);
-				font-size: 10px;
-			}
 		}
 		input {
 			flex: 1 1 auto;
-			font-size: 12px;
-			line-height: 14px;
-			color: #444444;
-			font-weight: 500;
-			border-top: none;
-			border-right: none;
-			border-left: none;
-			border-bottom: 1px solid lighten(#06b2bb, 10%);
-			outline: none;
-			overflow: hidden;
-			-moz-appearance: none;
-			background: transparent;
 			&:active {
 				color: #2980b9;
 			}
@@ -231,48 +217,6 @@
 				color: #444444;
 			}
 		}
-		::-webkit-input-placeholder {
-			opacity: 1;
-			transition: opacity 0.3s ease;
-			color: rgb(182, 182, 182);
-		}
-		::-moz-placeholder {
-			opacity: 1;
-			transition: opacity 0.3s ease;
-			color: rgb(182, 182, 182);
-		}
-		:-moz-placeholder {
-			opacity: 1;
-			transition: opacity 0.3s ease;
-			color: rgb(182, 182, 182);
-		}
-		:-ms-input-placeholder {
-			opacity: 1;
-			transition: opacity 0.3s ease;
-			color: rgb(182, 182, 182);
-		}
-		::placeholder {
-			opacity: 1;
-			transition: opacity 0.3s ease;
-			color: rgb(182, 182, 182);
-		}
-		:focus::-webkit-input-placeholder {
-			opacity: 0;
-			transition: opacity 0.3s ease;
-		}
-		:focus::-moz-placeholder {
-			opacity: 0;
-			transition: opacity 0.3s ease;
-		}
-		:focus:-moz-placeholder {
-			opacity: 0;
-			transition: opacity 0.3s ease;
-		}
-		:focus:-ms-input-placeholder {
-			opacity: 0;
-			transition: opacity 0.3s ease;
-		}
-
 		select {
 			@extend input;
 			color: #393939;
@@ -284,9 +228,6 @@
 			margin: 0;
 			width: 100%;
 			padding: 5px;
-			font-family: "Montserrat", sans-serif;
-			font-weight: 500;
-			color: #444444;
 		}
 	}
 

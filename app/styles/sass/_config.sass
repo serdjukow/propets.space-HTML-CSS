@@ -63,12 +63,17 @@ $gutter: $grid-gutter-width
 	background-color: $darkBlue
 	color: #fff
 
-input, textarea
-	outline: none
-	&:focus:required:invalid
-		border-color: red
-	&:required:valid
-		border-color: green
+input,
+textarea
+	outline: 0
+
+input:focus:required:invalid,
+textarea:focus:required:invalid
+	border-color: red
+
+input:required:valid,
+textarea:required:valid
+	border-color: green
 
 body
 	font-family: $userfont
@@ -96,15 +101,6 @@ body
 
 .page
 	flex: 1 1 100%
-
-.logo
-	display: inline-flex
-	align-items: center
-	@include adaptiv-value("width", 140, 100, 1)
-	margin-bottom: -10px
-	img
-		display: block
-		width: 100%
 
 .button
 	font-size: 16px
