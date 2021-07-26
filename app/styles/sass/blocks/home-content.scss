@@ -1,6 +1,6 @@
 .home-page {
 	&__container {
-		max-width: 536px;
+		max-width: 566px;
 		width: 100%;
 		margin: 0 auto;
 		padding: 30px 15px;
@@ -11,7 +11,6 @@
 
 	&__row {
 		position: relative;
-		min-height: 900px;
 	}
 
 	// .home-page__title
@@ -124,11 +123,6 @@
 	}
 	&._show-more {
 		grid-template-columns: 1fr;
-		position: absolute;
-		left: 0;
-		right: 0;
-		top: 0;
-		bottom: 0;
 		background: #fff;
 		border-bottom: none;
 		height: 100%;

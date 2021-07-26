@@ -2,8 +2,8 @@
 	display: none;
 	color: $white;
 	margin-bottom: 30px;
-	margin-right: 6px;
-	width: 35px;
+	margin-right: 13px;
+	width: 22px;
 	transform: rotate(0deg);
 	transition: 0.5s ease-in-out;
 	cursor: pointer;
@@ -34,7 +34,7 @@
 	span {
 		display: block;
 		position: absolute;
-		height: 3px;
+		height: 2px;
 		width: 50%;
 		background: $white;
 		opacity: 1;
@@ -47,7 +47,7 @@
 	}
 	span:nth-child(3),
 	span:nth-child(4) {
-		top: 9px;
+		top: 6px;
 	}
 	span:nth-child(1),
 	span:nth-child(2) {
@@ -56,11 +56,11 @@
 
 	span:nth-child(3),
 	span:nth-child(4) {
-		top: 9px;
+		top: 6px;
 	}
 	span:nth-child(5),
 	span:nth-child(6) {
-		top: 18px;
+		top: 12px;
 	}
 	&._active span:nth-child(1),
 	&._active span:nth-child(6) {
@@ -71,12 +71,12 @@
 		transform: rotate(-45deg);
 	}
 	&._active span:nth-child(1) {
-		left: 3px;
-		top: 2px;
+		left: 1px;
+		top: 1px;
 	}
 	&._active span:nth-child(2) {
-		left: calc(50% - 3px);
-		top: 2px;
+		left: calc(50% - 2px);
+		top: 1px;
 	}
 	&._active span:nth-child(3) {
 		left: -50%;
@@ -87,11 +87,11 @@
 		opacity: 0;
 	}
 	&._active span:nth-child(5) {
-		left: 3px;
-		top: 14px;
+		left: 1px;
+		top: 9px;
 	}
 	&._active span:nth-child(6) {
-		left: calc(50% - 3px);
-		top: 14px;
+		left: calc(50% - 2px);
+		top: 9px;
 	}
 }
