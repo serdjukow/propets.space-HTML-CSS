@@ -207,6 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	})
 
+	
 	const activePage = (dataSet) => {
 		fetch(`../parts/${dataSet}-content.html`)
 			.then(response => {
@@ -260,7 +261,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	})
 
-
 	const headerButtonFound = document.querySelector('.button.found')
 	headerButtonFound.addEventListener('click', (event) => {
 		event.preventDefault()
@@ -303,6 +303,15 @@ document.addEventListener('DOMContentLoaded', () => {
 			let parent = el.closest('.services-cards')
 			if (el.classList.contains('services-cards__details')) {
 				parent.classList.toggle('_show-more')
+			}
+			if (el.classList.contains('card-details__link')) {
+				fetch(`../parts/pets-more.html`)
+					.then(response => {
+						return response.text()
+					})
+					.then(content => {
+						document.querySelector(".home-page__content").innerHTML = content
+					})
 			}
 		})
 	}
