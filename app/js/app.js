@@ -304,7 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			if (el.classList.contains('services-cards__details')) {
 				parent.classList.toggle('_show-more')
 			}
-			if (el.classList.contains('card-details__link')) {
+			if (el.classList.contains('card-details__link') && el.closest('.card')) {
 				fetch(`../parts/pets-more.html`)
 					.then(response => {
 						return response.text()
