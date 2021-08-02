@@ -1,22 +1,27 @@
+// Библиотека для модального окна
 import MicroModal from 'micromodal';
+// / Библиотека для модального окна
+
+// Библиотека для анимации
 import { gsap } from "gsap";
+// / Библиотека для анимации
+
+// Компонент для настройка повторной анимации при появлении блока в окне браузера
 import { ScrollTrigger } from "gsap/scrolltrigger"
 gsap.registerPlugin(ScrollTrigger)
+// / Компонент для настройка повторной анимации при появлении блока в окне браузера
+
+// Инициализация переменных
 let cx, cy, mouseX, mouseY, posX, posY, clientX, clientY, dx, dy, tiltx, tilty, request, radius, degree
+// / Инициализация переменных
 
 document.addEventListener('DOMContentLoaded', () => {
-
-
 
 	const body = document.querySelector('body')
 	cx = window.innerWidth / 2
 	cy = window.innerHeight / 2
 
-
-
-
 	const modalContainer = document.querySelector('.modal__container')
-
 	if (modalContainer) {
 		body.addEventListener("mousemove", event => {
 			clientX = event.pageX;
@@ -39,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-
+	// Инициализация и настройка анимации блоков 
 	const welcomeImg = document.querySelector('.welcome__img')
 	const buttonLost = document.querySelector('.button-lost')
 	const buttonPet = document.querySelector('.button-pet')
@@ -109,9 +114,10 @@ document.addEventListener('DOMContentLoaded', () => {
 			duration: 1.5,
 		})
 	}
+	// / Инициализация и настройка анимации блоков 
 
-	const text = document.querySelector('.welcome__title');
-
+	// Анимация заголовка на главной странице
+	const text = document.querySelector('.welcome__title')
 	if (text) {
 		const splitText = (el) => {
 			el.innerHTML = el.textContent.replace(/(\S*)/g, m => {
@@ -120,14 +126,12 @@ document.addEventListener('DOMContentLoaded', () => {
 					`</div>`;
 			});
 			return el;
-		};
+		}
 
-		const split = splitText(text);
-
+		const split = splitText(text)
 		function random(min, max) {
 			return (Math.random() * (max - min)) + min;
 		}
-
 		Array.from(split.querySelectorAll('.letter')).forEach((el, idx) => {
 			gsap.from(el, 1, {
 				opacity: 0,
@@ -138,12 +142,11 @@ document.addEventListener('DOMContentLoaded', () => {
 				delay: idx * 0.02,
 				repeat: 0,
 			})
-		});
+		})
 	}
+	//  / Анимация заголовка на главной странице
 
-
-
-
+	// Анимация ввода текста в ворме регистрации
 	const buttonSignIn = document.querySelectorAll(`[data-micromodal-open="modal-1"]`)
 	if (buttonSignIn) {
 		let i = 0;
@@ -161,20 +164,16 @@ document.addEventListener('DOMContentLoaded', () => {
 			setTimeout(type, speed);
 		}))
 	}
+	// / Анимация ввода текста в ворме регистрации
 
-
-
-
-
-
-	// Modal
-
+	// Modal - инициализация модального окна для формы
 	MicroModal.init({
 		openTrigger: 'data-micromodal-open'
 	})
+	// / Modal - инициализация модального окна для формы
 
 
-
+	// Навигация по сайту
 	const menuButton = document.querySelector('.menu-button')
 	const navigationLeft = document.querySelector('.home-page__sidebar-left')
 	const navigationRight = document.querySelector('.home-page__sidebar-right')
@@ -207,9 +206,10 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	})
 
-	
+
 	const activePage = (dataSet) => {
 		fetch(`../parts/${dataSet}-content.html`)
+			//fetch(`../parts/add-post-form.html`)
 			.then(response => {
 				return response.text()
 			})
@@ -280,6 +280,25 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	})
 
+	const headerButtonAdd = document.querySelector('.button.add')
+	headerButtonAdd.addEventListener('click', (event) => {
+		event.preventDefault()
+		let el = event.target
+		if (el.closest('button').classList.contains('add')) {
+			removeLiActive()
+			removeNavActive()
+			fetch(`../parts/add-post-form.html`)
+				.then(response => {
+					return response.text()
+				})
+				.then(content => {
+					document.querySelector(".home-page__content").innerHTML = content
+					selects_init()
+				})
+
+		}
+	})
+
 	const userCardInfo = document.querySelector('.user-card__info')
 	userCardInfo.addEventListener('click', (event) => {
 		event.preventDefault()
@@ -315,9 +334,9 @@ document.addEventListener('DOMContentLoaded', () => {
 			}
 		})
 	}
+	// / Навигация по сайту
 
-
-	//Select
+	// Select - стилизация select
 	let selects = document.getElementsByTagName('select');
 	if (selects.length > 0) {
 		selects_init();
@@ -540,4 +559,5 @@ document.addEventListener('DOMContentLoaded', () => {
 			}
 		}
 	}
+	//  / Select - стилизация select
 })
