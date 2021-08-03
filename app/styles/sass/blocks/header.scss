@@ -9,15 +9,95 @@
 		margin-bottom: 30px;
 	}
 	&__buttons {
+		flex: 1 1 auto;
 		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		@include media-breakpoint-down(sm) {
+			span {
+				display: none;
+			}
+			.button::before {
+				margin-right: 0;
+			}
+		}
+	}
+
+	.user-card {
+		// .user-card__info
+
+		&__info {
+			display: inline-grid;
+			grid-template: auto auto / 35px 105px;
+			column-gap: 10px;
+			padding-top: 0;
+			padding-bottom: 0;
+			padding-left: 10px;
+			border-top: 0 solid rgba($white, 0.5);
+			border-bottom: 0 solid rgba($white, 0.5);
+			border-left: 1px solid rgba($white, 0.5);
+			margin-bottom: 0;
+			margin-left: 10px;
+			width: 100%;
+			max-width: 140px;
+			min-width: 70px;
+			cursor: pointer;
+			transition: opacity 0.3s ease-in-out;
+			@media (any-hover: hover) {
+				&:hover {
+					opacity: 0.6;
+				}
+			}
+			@include media-breakpoint-down(xl) {
+				grid-template: auto auto / 35px 1fr;
+			}
+		}
+
+		// .user-card__img
+
+		&__img {
+			grid-row: span 2;
+			text-align: center;
+			align-self: center;
+			border: 1px solid $white;
+			border-radius: 100%;
+			overflow: hidden;
+			img {
+				display: block;
+				width: 100%;
+			}
+		}
+
+		// .user-card__lastname
+
+		&__name {
+			text-align: start;
+			font-size: 12px;
+			color: $white;
+		}
+
+		// .user-card__logout
+
+		&__logout {
+			display: flex;
+			align-items: center;
+			text-decoration: none;
+			font-size: 14px;
+			color: $white;
+			margin-left: 2%;
+			transition: color 0.3s ease-in-out;
+			&::before {
+				margin-right: 8px;
+			}
+		}
 	}
 }
+
 .header-row {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	min-height: 70px;
-
 }
 
 .home-header {
@@ -52,7 +132,7 @@
 		width: 100%;
 		animation: dashWite 5s linear forwards, fillingWhite 5s ease-in forwards;
 		stroke: #fff;
-		overflow: visible;		
+		overflow: visible;
 		@keyframes dashWite {
 			to {
 				stroke-dashoffset: 0;

@@ -1,33 +1,29 @@
+
 <!DOCTYPE html>
 <html>
 
 <head>
-
 	<meta charset="utf-8">
-	<!-- <base href="/"> -->
+	<!-- <base href="/home.html"> -->
 	<title>
-		<!--#echo var="title" -->
+		Home
 	</title>
-	<meta name="description" content="ProPets.space">
+	<meta name="description" content="Startup HTML template OptimizedHTML 5">
 
 	<meta name="viewport"
 		content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-	<link rel="icon" href="images/favicon.png">
+	<link rel="icon" href="../images/favicon.png">
 	<meta property="og:image" content="images/dist/preview.jpg">
-	<link rel="stylesheet" href="./fonts/icons-fonts/icons.css">
-	<link rel="stylesheet" href="css/main.min.css">
-	<!--
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/ScrollTrigger.min.js"></script>
--->
+	<link rel="stylesheet" href="../fonts/icons-fonts/icons.css">
+	<link rel="stylesheet" href="../css/main.min.css">
 </head>
 
 <body>
 	<div class="wrapper">
-		<header class="header">
+		<header class="header home-header">
 			<div class="header-row _container">
-				<a href="/" class="header-logo logo logo-white">
+				<a href="/" class="home-header logo-blue logo">
 					<svg class="text-line" xmlns="http://www.w3.org/2000/svg" width="141.833" height="33.278"
 						viewBox="0 0 141.833 33.278">
 						<path class="a"
@@ -69,31 +65,92 @@
 					</svg>
 				</a>
 				<div class="header__buttons">
-					<button class="header__button button" data-micromodal-open="modal-1">
-						Sign in
+					<button class="header__button button red icon-search lost">
+						<span>I lost my pet</span>
 					</button>
-
-					<a href="" class="user-card__logout icon-sign-out-alt">
-						<span>Logout</span>
-					</a>
-
-					<div class="user-card">
-						<div class="user-card__info">
-							<div class="user-card__img">
-								<img src="../images/dist/users/anna-smith.jpg" alt="">
-							</div>
-							<div class="user-card__name">
-								Anna
-							</div>
-							<div class="user-card__name">
-								Smith
-							</div>
-						</div>
-
-					</div>
-
-
-
+					<button class="header__button button blue icon-paw found">
+						<span>I found a pet</span>
+					</button>
+					<button class="header__button button blue icon-plus add">
+						<span>Add new</span>
+					</button>
 				</div>
 			</div>
 		</header>
+
+
+
+<main class="page home-page">
+	<aside class="home-page__sidebar-left">
+		<nav class="home-page__navigation navigation">
+			<div class="menu-button">
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+			<ul class="navigation__list">
+				<li class="navigation__li">
+					<a data-menu="home" href="#" class="navigation__link icon-home">Home</a>
+				</li>
+				<li class="navigation__li">
+					<a data-menu="lost" href="#" class="navigation__link icon-search">Lost</a>
+				</li>
+				<li class="navigation__li">
+					<a data-menu="found" href="#" class="navigation__link icon-paw">Found</a>
+				</li>
+			</ul>
+		</nav>
+		<nav class="home-page__navigation navigation nav-services">
+			<div class="nav-services__title-container">
+				<h4 class="nav-services__title">Services</h4>
+			</div>
+			<ul class="navigation__list">
+				<li class="navigation__li">
+					<a data-menu="hotels" href="#" class="navigation__link icon-hotel">Hotels</a>
+				</li>
+				<li class="navigation__li">
+					<a data-menu="walking" href="#" class="navigation__link icon-walking">Walking</a>
+				</li>
+				<li class="navigation__li">
+					<a data-menu="fostering" href="#" class="navigation__link icon-dog">Fostering</a>
+				</li>
+				<li class="navigation__li">
+					<a data-menu="vethelp" href="#" class="navigation__link icon-stethoscope">VetHelp</a>
+				</li>
+			</ul>
+		</nav>
+	</aside>
+	<section class="home-page__content">
+
+	</section>
+	<aside class="home-page__sidebar-right">
+
+		<div class="user-card">
+
+			<div class="user-card__info">
+				<div class="user-card__img">
+					<img src="../images/dist/users/anna-smith.jpg" alt="">
+				</div>
+				<div class="user-card__name">
+					Anna
+				</div>
+				<div class="user-card__name">
+					Smith
+				</div>
+			</div>
+
+			<a href="" class="user-card__logout icon-sign-out-alt">
+				<span>Logout</span>
+			</a>
+
+		</div>
+	</aside>
+</main>
+
+</div>
+<script src="../js/app.min.js"></script>
+</body>
+</html>

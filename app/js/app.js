@@ -209,7 +209,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	const activePage = (dataSet) => {
 		fetch(`../parts/${dataSet}-content.html`)
-			//fetch(`../parts/add-post-form.html`)
 			.then(response => {
 				return response.text()
 			})
