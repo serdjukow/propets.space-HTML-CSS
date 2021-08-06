@@ -44,7 +44,8 @@
 	box-shadow: 0 8px 6px -4px rgb(0 0 0 / 10%);
 	box-shadow: 0 0 10px 2px #d0d0d0;
 	border-radius: 12px;
-	overflow:hidden;
+	overflow: hidden;
+	min-height: 200px;
 	&:not(:last-child) {
 		margin-bottom: 20px;
 	}
@@ -126,7 +127,7 @@
 		background: #fff;
 		border-bottom: none;
 		height: 100%;
-		overflow-x: hidden;		
+		overflow-x: hidden;
 		.services-cards__text {
 			p {
 				display: block;
@@ -175,7 +176,7 @@
 	column-gap: 10px;
 	padding: 10px;
 	&:not(:last-child) {
-		margin-bottom:0;
+		margin-bottom: 0;
 	}
 	// .pet-avatar__img
 
